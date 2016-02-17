@@ -1,0 +1,25 @@
+<div class="container" ng-controller="TechShareListController as list">
+    <div class="row">
+        <table class="table table-hover table-striped">
+			<thead>
+				<th>主题</th>
+				<th>附件</th> 
+				<th>分享人</th> 
+				<th>日期</th>
+				<th>评分</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in list.techShareList">
+					<td><a target="_blank" ng-click="list.showDetail(item.link)">{{item.subject}}</a></td>
+					<td><a target="_blank" href="{{item.attachment}}" ng-show="item.attachment">下载</a></td>
+					<td>{{item.user}}</td>
+					<td>{{item.shareDate |date:'yyyy-MM-dd'}}</td>
+					<td>{{item.point}}</td>
+				</tr>
+			</tbody>
+		</table>
+			 
+    </div> 
+	<hr/>
+	<a href="#/techPk">评分</a>
+</div>

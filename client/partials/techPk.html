@@ -1,0 +1,36 @@
+<div class="container" ng-controller="TechPkController as pk">
+    <div class="row">
+        <div class="col-md-6">
+			<div class="col-md-3"> 
+				<select class="form-control" ng-model="pk.techShareA.user" id="UserA" ng-options="option.name for option in pk.Users track by option.name"> 
+				</select>
+		    </div>
+			<div class="col-md-8"> 
+				<input type="text" class="form-control" id="subjectA" placeholder="请输入主题" ng-model="pk.techShareA.subject"> 
+			</div>
+			<div class="col-md-1"></div> 
+		    <div class="rateing-directive" rateing-directive subject="pk.techShareA"></div>
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-1">
+			</div>
+        </div>
+		 <div class="col-md-6"> 
+			<div class="col-md-3"> 
+				<select class="form-control" ng-model="pk.techShareB.user" id="UserB" ng-options="option.name for option in pk.Users track by option.name"> 
+				</select>
+		    </div>
+			<div class="col-md-8"> 
+				<input type="text" class="form-control" id="subjectB" placeholder="请输入主题" ng-model="pk.techShareB.subject"> 
+			</div>
+			<div class="col-md-1"></div> 
+			<div rateing-directive subject="pk.techShareB"></div>
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-1">
+			</div>
+        </div>
+    </div> 
+	<hr/>
+    <button type="button" class="btn btn-primary" ng-disabled="!(pk.techShareA.point > 0 && pk.techShareB.point > 0)" ng-click="pk.save()">保存</button>
+</div>

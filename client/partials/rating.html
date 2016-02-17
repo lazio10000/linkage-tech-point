@@ -1,0 +1,7 @@
+	<h3 style="height:30px" class="col-md-11" ><small>{{pk.points.join('+')}}</small> <strong ng-show="pk.points.length > 0">: {{pk.subject.point}}</strong></h3>
+ 
+	<div   class="col-md-5 btn-group " role="group" ng-if="pk.subject.subject && pk.subject.user">
+		<button type="button" class="btn btn-danger"  ng-click="pk.rating(1)">凑合</button> 
+		<button type="button" class="btn btn-warning" ng-click="pk.rating(2)">不错</button> 
+		<button type="button" class="btn btn-success" ng-click="pk.rating(3)">很好</button>
+	</div>
