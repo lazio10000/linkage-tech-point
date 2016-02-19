@@ -45,7 +45,7 @@
 	techShare.user = techShare.user.name; 
 	var operTime = new Date();
 	db.Users.update({'user_no':user_no},{$set:{'points':user_point + techShare.point}});
-	db.PointsHistory.insert({'user_no':user_no,'points':techShare.point,'operateTime':operTime,'pointType':'¼¼Êõ·ÖÏí'});
+	db.PointsHistory.insert({'user_no':user_no,'points':techShare.point,'operateTime':operTime,'pointType':'æŠ€æœ¯åˆ†äº«'});
     db.techShare.insert(techShare, function(err, data) { 
       res.json(data);
     });
