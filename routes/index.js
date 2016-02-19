@@ -13,7 +13,7 @@
   if(mongoUsername){
 	mongoUrl = mongoUsername + ":" + mongoPassword + "@" + mongoUrl;
   }
-  var db = mongojs(mongoUrl, ['techShare','Users']);
+  var db = mongojs(mongoUrl, ['techShare','Users','PointsHistory']);
  
   /* GET home page. */
   router.get('/', function(req, res) {
@@ -21,9 +21,15 @@
   });
   
   router.get('/api/users', function(req, res) {
-	 db.Users.find(function(err, data) {
-      res.json(data);
-    });
+	 db.Users.find().sort({'user_no': 1}, function (err, data) {
+       res.json(data);
+	});
+  });
+  
+  router.get('/api/points/*', function(req, res) {
+	 db.PointsHistory.find({user_no:req.query.user_no},  function (err, data) {
+       res.json(data);
+	});
   });
  
   router.get('/api/techShare', function(req, res) {
@@ -33,32 +39,26 @@
   });
  
   router.post('/api/techShare', function(req, res) {
-    db.techShare.insert(req.body, function(err, data) {
+    var techShare =  req.body;
+	var user_no = techShare.user.user_no;
+	var user_point = techShare.user.points;
+	techShare.user = techShare.user.name; 
+	var operTime = new Date();
+	db.Users.update({'user_no':user_no},{$set:{'points':user_point + techShare.point}});
+	db.PointsHistory.insert({'user_no':user_no,'points':techShare.point,'operateTime':operTime,'pointType':'ºº ı∑÷œÌ'});
+    db.techShare.insert(techShare, function(err, data) { 
       res.json(data);
     });
  
   });
  
-  router.put('/api/todos', function(req, res) {
- 
-    db.todos.update({
-      _id: mongojs.ObjectId(req.body._id)
-    }, {
-      isCompleted: req.body.isCompleted,
-      todo: req.body.todo
-    }, {}, function(err, data) {
-      res.json(data);
-    });
- 
-  });
- 
-  router.delete('/api/todos/:_id', function(req, res) {
-    db.todos.remove({
-      _id: mongojs.ObjectId(req.params._id)
-    }, '', function(err, data) {
-      res.json(data);
-    });
- 
+  router.post('/api/login', function(req, res) { 
+	  if(req.body.pwd !== 'linkage'){
+		 res.status(401).end();
+	  }
+	  else{
+		res.send({ msg: 'OK' }); 
+	  }
   });
  
   module.exports = router;

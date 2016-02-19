@@ -9,18 +9,21 @@ angular.module('com.linkage.tech').factory('techShareFactory', function($http) {
   _techShareService.getUsers = function() {
     return $http.get('/api/users');
   };
- 
-  _techShareService.saveTechShare = function(todo) {
-    return $http.post(urlBase, todo);
+  
+  _techShareService.getPoints = function(user) {
+    return $http.get('/api/points/?user_no=' + user);
   };
  
-  _techShareService.updateTodo = function(todo) {
-    return $http.put(urlBase, todo);
-  };
- 
-  _techShareService.deleteTodo = function(id) {
-    return $http.delete(urlBase + '/' + id);
-  };
- 
+  _techShareService.saveTechShare = function(techShare) {
+    return $http.post(urlBase, techShare);
+  }; 
+  
   return _techShareService;
+}).factory('authService', function($http) {
+     var _authService = {};
+	 _authService.login = function (pwd) {
+		return  $http.post('/api/login',{'pwd':pwd});
+     }; 
+     return _authService;
+
 });

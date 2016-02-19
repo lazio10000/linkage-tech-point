@@ -2,12 +2,15 @@
 <html ng-app="com.linkage.tech">
  
 <head>
-  <title>linkage-tech-point</title>
+  <title>Linkage-Tech-Point</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-additions.min.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
  
   <script type="text/javascript" src="/lib/angular.min.js"></script>
-  <script type="text/javascript" src="/lib/angular-route.min.js"></script>
+  <script type="text/javascript" src="/lib/angular-ui-router.js"></script> 
+  <script type="text/javascript" src="/lib/angular-animate.js"></script> 
+  <script type="text/javascript" src="/lib/ui-bootstrap-tpls-1.1.2.min.js"></script>  
   <script type="text/javascript" src="/javascripts/app.js"></script>
   <script type="text/javascript" src="/javascripts/services/factory.js"></script>
   <script type="text/javascript" src="/javascripts/controllers/controllers.js"></script>
@@ -15,10 +18,19 @@
 </head>
  
 <body>
-  <div class="container">
-    <h1>Tech-Points</h1>
-    <hr/>
-    <ng-view></ng-view>
+	<div class="tech-nav">
+      <div class="container">
+        <nav class="tech-nav">
+          <a class="tech-nav-item" href="/#">Linkage-Tech-Point</a>
+          <a class="tech-nav-item" href="/#">积分排名</a>
+          <a class="tech-nav-item" href="/#/techShareList">技术交流</a>
+          <a class="tech-nav-item" href="/#/techPk">评分</a>
+          <a class="tech-nav-item" href="/#/about">About</a>
+        </nav>
+      </div>
+    </div> 
+  <div class="container">   
+    <div ui-view></div>
   </div> 
 </body> 
 </html>
