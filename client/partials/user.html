@@ -1,0 +1,32 @@
+<br/>
+<div class="container">  
+ <script type="text/ng-template" id="alert.html">
+    <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+      <div ng-transclude></div>
+    </div>
+  </script>
+  <uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+    <form ng-submit="vm.submit()">
+	  <div class="form-group">
+		<label for="_user_no">工号</label>
+		<input type="text" class="form-control" id="_user_no" ng-model="vm.user.user_no" readonly="readonly"/>
+	  </div>
+	  <div class="form-group">
+		<label for="_name">姓名</label>
+		<input type="text" class="form-control" id="_name" ng-model="vm.user.name" readonly="readonly"/>
+	  </div>
+	  <div class="form-group">
+		<label for="_blog">博客</label>
+		<input type="text" class="form-control" id="_blog" ng-model="vm.user.blog" placeholder="博客：自建网站、CSDN、CNBLOGS等等都可以"/>
+	  </div>
+	   <div class="form-group">
+		<label for="_github">Github</label>
+		<input type="text" class="form-control" id="_github" ng-model="vm.user.github" placeholder="开源项目：Github、bitbucket、oschina等等可以"/>
+	  </div>
+	  <div class="form-group">
+		<label for="_douban">豆瓣账户名</label>
+		<input type="text" class="form-control" id="_douban" ng-model="vm.user.douban" placeholder="豆瓣账户名，读书后更新豆瓣读书"/>
+	  </div> 
+	  <button type="submit" class="btn btn-primary">保存</button>
+	</form> 
+</div>

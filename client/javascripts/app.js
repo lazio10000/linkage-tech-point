@@ -5,11 +5,15 @@ angular.module('com.linkage.tech', ['ui.router','ngAnimate','ui.bootstrap'])
     $stateProvider.state('home',{
 		url :'/',
 		templateUrl: './partials/users.html',
-		controller: 'UserController as users' 
+		controller: 'UsersController as users' 
 	}).state('techPk',{
 		url :'/techPk',
 		templateUrl: './partials/techPk.html',
 		controller: 'TechPkController as pk' 
+	}).state('user',{
+		url :'/user/:id',
+		templateUrl: './partials/user.html',
+		controller: 'UserController as vm' 
 	}).state('techShareList',{
 		url :'/techShareList',
 		templateUrl: './partials/techShareList.html',

@@ -10,6 +10,14 @@ angular.module('com.linkage.tech').factory('techShareFactory', function($http) {
     return $http.get('/api/users');
   };
   
+  _techShareService.getUser = function(userid) {
+    return $http.get('/api/users/' + userid);
+  };
+  
+  _techShareService.updateUser = function(user) {
+    return $http.put('/api/users',user);
+  };
+  
   _techShareService.getPoints = function(user) {
     return $http.get('/api/points/?user_no=' + user);
   };

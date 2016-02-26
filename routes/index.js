@@ -26,6 +26,26 @@
 	});
   });
   
+  router.get('/api/users/:userid', function(req, res) {
+	 db.Users.find({
+      _id: mongojs.ObjectId(req.params.userid)
+    }, function (err, data) {
+       res.json(data);
+	});
+  });
+  
+ router.put('/api/users', function(req, res) {
+    db.Users.update({
+      _id: mongojs.ObjectId(req.body._id)
+    }, {  $set :{
+		blog : req.body.blog,
+		github :  req.body.github,
+		douban : req.body.douban}
+    }, {}, function(err, data) {
+      res.json(data);
+    });
+  });
+  
   router.get('/api/points/*', function(req, res) {
 	 db.PointsHistory.find({user_no:req.query.user_no},  function (err, data) {
        res.json(data);

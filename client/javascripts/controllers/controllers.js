@@ -31,7 +31,7 @@ angular.module('com.linkage.tech' ).controller('TechPkController', function(tech
   };
    
   return vm;
-}).controller('UserController', function(techShareFactory,$uibModal) {
+}).controller('UsersController', function(techShareFactory,$uibModal) {
   var vm = this;   
   vm.Users = [];   
   techShareFactory.getUsers().then(function(data) {
@@ -49,11 +49,22 @@ angular.module('com.linkage.tech' ).controller('TechPkController', function(tech
         }
       } 
     }); 
-  };
-    
+  }; 
   return vm;
-}).controller('PointsController', function ($scope, $uibModalInstance, items) {
-	console.log( items.data);
+}).controller('PointsController', function ($scope, $uibModalInstance, items) { 
 		$scope.items = items.data;  
 	
+}).controller('UserController', function (techShareFactory,$stateParams,$location,$timeout) { 
+	var vm = this; 
+	vm.alerts = [];
+	vm.user = {};
+	techShareFactory.getUser($stateParams.id).then(function(data) { 
+		vm.user = data.data[0];
+	}); 
+	vm.submit = function(){
+		techShareFactory.updateUser(vm.user).then(function(){
+			vm.alerts.push({msg: '保存成功'});
+			$timeout(function(){$location.path('/')}, 3000);
+		});
+	};
 });

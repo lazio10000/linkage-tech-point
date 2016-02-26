@@ -1,4 +1,4 @@
-<div class="container" ng-controller="UserController as users">  
+<div class="container">  
  <script type="text/ng-template" id="points.html">
         <div class="modal-header">
 			<h3 class="modal-title">积分明细</h3>
@@ -15,15 +15,13 @@
         <table class="table table-hover table-striped">
 			<thead>
 				<th>工号</th>
-				<th>姓名</th> 
-				<th>邮箱</th> 
+				<th>姓名</th>  
 				<th>积分</th>  
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in users.Users">
-					<td>{{item.user_no}}</td>
-					<td>{{item.name}}</td>
-					<td>{{item.email}}</td>
+					<td><a ui-sref="user({id:item._id})">{{item.user_no}}</a></td>
+					<td>{{item.name}}</td> 
 					<td><a ng-click="users.open(item.user_no)">{{item.points}}</a></td>
 				</tr>
 			</tbody>
