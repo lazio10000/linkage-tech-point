@@ -16,12 +16,18 @@
 			<thead>
 				<th>工号</th>
 				<th>姓名</th>  
+				<th>博客</th>  
+				<th>豆瓣</th>  
+				<th>GITHUB</th>  
 				<th>积分</th>  
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in users.Users">
 					<td><a ui-sref="user({id:item._id})">{{item.user_no}}</a></td>
 					<td>{{item.name}}</td> 
+					<td>{{item.blog}}</td> 
+					<td>{{item.douban}}</td> 
+					<td>{{item.github}}</td> 
 					<td><a ng-click="users.open(item.user_no)">{{item.points}}</a></td>
 				</tr>
 			</tbody>
